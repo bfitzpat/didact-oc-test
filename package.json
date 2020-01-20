@@ -2,7 +2,10 @@
 	"name": "didact-oc-test",
 	"displayName": "didact-oc-test",
 	"description": "",
+	"license": "Apache-2.0",
 	"version": "0.0.1",
+	"publisher": "redhat",
+	"preview": true,
 	"engines": {
 		"vscode": "^1.41.0"
 	},
@@ -13,14 +16,6 @@
 		"*"
 	],
 	"main": "./out/extension.js",
-	"contributes": {
-		"commands": [
-			{
-				"command": "extension.helloWorld",
-				"title": "Hello World"
-			}
-		]
-	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
 		"compile": "tsc -p ./",
@@ -28,6 +23,9 @@
 		"pretest": "npm run compile",
 		"test": "node ./out/test/runTest.js"
 	},
+	"extensionDependencies": [
+		"redhat.vscode-didact"
+	],
 	"devDependencies": {
 		"@types/glob": "^7.1.1",
 		"@types/mocha": "^5.2.7",

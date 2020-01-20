@@ -35,22 +35,22 @@ async function registerTutorialWithDidact(context: vscode.ExtensionContext) {
 		const extensionId = 'redhat.vscode-didact';
 		const didactExt : any = vscode.extensions.getExtension(extensionId);
 		if (didactExt) {
-			const tutorialFolder = path.join(context.extensionPath, `src/first-tutorial.didact.md`);
-			console.log(tutorialFolder);
+			// command ID: vscode.didact.register
 			const commandId = 'vscode.didact.register';
-			const tutorialName = `OC Didact Test`; // replace this with the name of your integration to appear in the Didact view
-			const tutorialPath = tutorialFolder; // replace this path with the location of your markdown file like ./path/to/tutorial.md
-			const tutorialUri = vscode.Uri.parse(`file://${tutorialPath}`);
-			const tutorialCategory = `Experiments`; // replace this with the name of the category for your tutorial
 
 			// then pass name, uri, and category
+			const tutorialName = 'OC Didact Test';
+			const tutorialPath = path.join(context.extensionPath, './didact/oc-test.didact.md');
+			const tutorialUri = vscode.Uri.parse(`file://${tutorialPath}`);
+			const tutorialCategory = 'Experiments';
+
+			console.log('Tutorial URI registered: ' + tutorialUri.fsPath);
+
 			await vscode.commands.executeCommand(
 				commandId,
 				tutorialName, 
 				tutorialUri,
-				tutorialCategory).then ( () => {
-					console.log('We did something!');
-				});
+				tutorialCategory);		
 		}
 	} catch (error) {
 		console.log(error);

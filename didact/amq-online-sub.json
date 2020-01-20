@@ -1,0 +1,8 @@
+{
+    "files": [
+        {
+            "name":"amq-online-sub.yaml",
+            "copy":"amq-online-sub.yaml"
+        }
+    ]
+}
