@@ -22,7 +22,7 @@ Now let's install a new operator from OperatorHub. Something like `oc describe p
 
 Lastly, we'll create a Subscription object YAML file to describe a namespace to an Operator -- in this case our `amq-online` operator.
 
-    `
+```
     apiVersion: operators.coreos.com/v1alpha1
     kind: Subscription
     metadata:
@@ -33,7 +33,7 @@ Lastly, we'll create a Subscription object YAML file to describe a namespace to 
         name: amq-online 
         source: redhat-operators 
         sourceNamespace: openshift-marketplace
-`
+```
 
 [Click here to create the file](didact://?commandId=vscode.didact.scaffoldProject&extFilePath=redhat.didact-oc-test/didact/amq-online-sub.json&completion=Created%20subscription%20yaml%20file.){.didact}
 
@@ -57,31 +57,31 @@ Installing the Camel K operator seems to be a community operator - https://opera
 
 We should be able to create this camel-k.yaml file:
 
-`
-apiVersion: operators.coreos.com/v1alpha1 
-kind: Subscription 
-metadata: 
-    name: my-camel-k 
-    namespace: operators 
-spec: 
-    channel: alpha 
-    name: camel-k 
-    source: operatorhubio-catalog 
-    sourceNamespace: olm
-`
+```
+    apiVersion: operators.coreos.com/v1alpha1
+    kind: Subscription
+    metadata:
+        name: my-camel-k
+        namespace: operators
+    spec:
+        channel: alpha
+        name: camel-k
+        source: operatorhubio-catalog
+        sourceNamespace: olm
+```
 
 And then install it with `oc apply -f camel-k.yaml` in a terminal window
 
 We probably need to create the following custom resource integrationplatform.yaml:
 
-`
-apiVersion: camel.apache.org/v1
-kind: IntegrationPlatform
-metadata:
-  name: camel-k
-  labels:
-    app: "camel-k"
-`
+```
+     apiVersion: camel.apache.org/v1
+     kind: IntegrationPlatform
+     metadata:
+          name: camel-k
+     labels:
+          app: "camel-k"
+```
 
 And call it with `oc apply -f integrationplatform.yaml`
 
